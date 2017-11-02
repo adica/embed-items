@@ -1,9 +1,10 @@
 # embed-items
 
-* what we did until now
-* what we would do in the future
-* freindly iframe
-  * what is it
+* introduction - where I work, what we doing there, and what is the problem with the embed.
+* what we did until now - `iframe` with `src`, the source is on our servers
+* what we would do in the future - `web components` short intoduction
+* freindly iframe 
+  * what is it - A friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
   * pros
     * faster
     * seo
