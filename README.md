@@ -1,15 +1,16 @@
 # embed-items
 
 * introduction - where I work, what we doing there.
-* what we did until now - `iframe` with `src`, the source is on our servers
+* what we did until now - `iframe` with `src`, the source is on our servers, show code snnipet
 * what is the problem with classic iframe embed - 
  * very slow 
  * not responsive desgin (js nedded)
  * hard to do SEO
  * `post-messages` are very slow
- * `iframe` is placed very low on the browser resources quoue
+ * `iframe` asstets are prioritize very low on browser quoue
 * freindly iframe 
   * what is it - A friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
+  * usage code snipet
   * pros
     * faster
     * seo
