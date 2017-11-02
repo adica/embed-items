@@ -22,3 +22,4 @@
     * hard to convince partners
     * CORS
     * harder to develop
+* performance demo - old vs new (video?)
