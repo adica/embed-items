@@ -18,9 +18,8 @@ When the `feed.js` script run - it build an `iframe` on the host page and refer 
 That way - we control the entire `iframe` page, the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years for many sites (`youtube` still use it for example), it had many flows:
- * `iframe` assets are prioritized very low on browser queue
- * `iframe` is very slow 
- * not easy to create pages with responsive design (js needed, can't be done with CSS only)
+ * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page after the host page, and it will slow our page render.
+ * `iframe` is not responsive. so every time the host page change its layout (phone tilt) we need to know about it.
  * hard to do SEO - the pages index like its `playbuzz` pages instead of the host.
  * `post-messages` (a way to communicate between `iframe` and the host) are very slow.
  
