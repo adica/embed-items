@@ -2,9 +2,10 @@
 
 In the past year, I'm working at [playbuzz](https://www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
 
-After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their pages, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
 
-To do so - we give the user a code snippet that looks something like that:
+## Embed with an old good iframe
+To embed with iframe we give the user a code snippet that looks something like that:
 
 ```js
 <script src="//cdn.playbuzz.com/widget/feed.js"></script>
@@ -23,21 +24,27 @@ While this method works for many years for many sites (`youtube` still use it fo
  * it's hard to do optimise SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  * `post-messages` (a way to communicate between `iframe` and the host) are very slow.
  
-TODO:
- 
-* freindly iframe 
-  * what is it - A friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
-  * usage code snipet
-  * pros
+## Embed with freindly iframe 
+Freindly iframe its another way to embed webpages on host sites. basically friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
+
+We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page `head` and `body` content into this `iframe`. That way we get the same result, but now without any refernce to `playbuzz` servers on the host site.
+
+## Freindly iframe pros
     * faster
     * seo
     * higher cpm (?)
     * ease the parent-child communication (no slow `post-message`)
     * part of the page
     * get higher priority in page
-  * cons
+    
+## Freindly iframe pros
     * cookies, localstorage (shared with parent if you don't use xdomain lib)
     * hard to convince partners
     * CORS
     * harder to develop
+    
+## Demo
 * performance demo - old vs new (video?)
+
+## Conclusion
+friendly iframe is better.. bla bla bla
