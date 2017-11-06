@@ -1,10 +1,10 @@
 # embed web pages with friendly iframe
 
-In the past year, I've been working at [playbuzz](https://www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
+In the past year, I'm working at [playbuzz](https://www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
 
-After they use our [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their pages, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their pages, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
 
-When one of our partners finish to editing this page we give him a code snippet that looks something like that:
+To do so - we give the user a code snippet that looks something like that:
 
 ```js
 <script src="//cdn.playbuzz.com/widget/feed.js"></script>
@@ -15,12 +15,12 @@ When one of our partners finish to editing this page we give him a code snippet 
 
 When the `feed.js` script run - it build an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
 
-That way - we control the entire `iframe` page, the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
+That way - we control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years for many sites (`youtube` still use it for example), it had many flows:
- * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page after the host page, and it will slow our page render.
- * `iframe` is not responsive. so every time the host page change its layout (phone tilt) we need to know about it.
- * hard to do SEO - the pages index like its `playbuzz` pages instead of the host.
+ * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
+ * `iframe` is not responsive. so every time the host page change its layout (phone tilt for example) we need to know about it on our `feed.js` and change our `iframe` layout as well.
+ * it's hard to do optimise SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  * `post-messages` (a way to communicate between `iframe` and the host) are very slow.
  
 TODO:
