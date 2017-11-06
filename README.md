@@ -1,4 +1,4 @@
-# embed-items
+# embed web pages with friendly iframe
 
 In the past year, I've been working at [playbuzz](www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
 
