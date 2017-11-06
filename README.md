@@ -8,9 +8,9 @@ When one of our partners finish to editing this page we give him a code snippet 
 
 ```js
 <script src="//cdn.playbuzz.com/widget/feed.js"></script>
-   <div class="pb_feed"
-        data-item="xxx-xxx-xxx">
-   </div>
+<div class="pb_feed"
+   data-item="xxx-xxx-xxx">
+</div>
 ```
 
 When the `feed.js` script run - it build an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
