@@ -1,6 +1,6 @@
 # embed web pages with friendly iframe
 
-In the past year, I've been working at [playbuzz](www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
+In the past year, I've been working at [playbuzz](https://www.playbuzz.com), as part of the `story` team. we build a platform that helps our partners to create more engaging content.
 
 After they use our [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their pages, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
 
