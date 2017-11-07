@@ -8,19 +8,35 @@ After our users use the [creator](https://publishers.playbuzz.com/create-with-pl
 To embed with iframe we give the user a code snippet that looks something like that:
 
 ```js
-<script src="//cdn.playbuzz.com/widget/feed.js"></script>
+<script src="//cdn.playbuzz.com/widget/sdk.js"></script>
 <div class="pb_feed"
    data-item="xxx-xxx-xxx">
 </div>
 ```
 
-When the `feed.js` script run - it build an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
+When the `sdk.js` script run - it build an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
+
+```html
+//host page
+<html>
+   <head>...</head>
+   <body>
+      ...
+      <div class="pb_feed" data-item="xxx-xxx-xxx">
+         <iframe src="//www.playbuz.com/item/xxx-xxx-xxx">
+            //iframe page from playbuzz servers
+         </iframe>
+      </div>
+      ...
+   </body>
+</html>
+```
 
 That way - we control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
  * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
- * `iframe` is not responsive. so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `feed.js` somehow, and change our `iframe` layout as well.
+ * `iframe` is not responsive. so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
  * it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  * the way to communicate between `iframe` and the host (`post-messages`) is very slow.
  
@@ -28,6 +44,26 @@ While this method works for many years on many sites (`youtube` still use it for
 Freindly iframe is another way to embed webpages on host sites. basically friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
 
 We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page (`head` and `body`) content into this `iframe`. That way we get the same result, but now without any refernce to `playbuzz` servers on the host site.
+
+```html
+//host page
+<html>
+   <head>...</head>
+   <body>
+      ...
+      <div class="pb_feed" data-item="xxx-xxx-xxx">
+         <iframe>
+            //iframe page content is part of the host page
+            <html>
+               <head>...</head>
+               <body>...</body>
+            </html>
+         </iframe>
+      </div>
+      ...
+   </body>
+</html>
+```
 
 ## Freindly iframe pros
 * because we are now just another part on the host page DOM, we render our page much faster
