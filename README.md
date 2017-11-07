@@ -24,7 +24,13 @@ When the `sdk.js` script run - it build an `iframe` on the host page and refer i
       ...
       <div class="pb_feed" data-item="xxx-xxx-xxx">
          <iframe src="//www.playbuz.com/item/xxx-xxx-xxx">
-            //iframe page from playbuzz servers
+            
+            //iframe content from playbuzz servers
+             <html>
+               <head>...</head>
+               <body>...</body>
+            </html>
+            
          </iframe>
       </div>
       ...
@@ -53,11 +59,13 @@ We use the same code snippet as before, but this time we build an `iframe` witho
       ...
       <div class="pb_feed" data-item="xxx-xxx-xxx">
          <iframe>
+            
             //iframe page content is part of the host page
             <html>
                <head>...</head>
                <body>...</body>
             </html>
+            
          </iframe>
       </div>
       ...
