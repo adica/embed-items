@@ -2,7 +2,7 @@
 
 In the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and blogers to create more engaging content.
 
-After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on most sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
 
 ## Embed with a good old iframe
 To embed with iframe we give the user a code snippet that looks something like that:
