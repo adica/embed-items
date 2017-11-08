@@ -41,10 +41,10 @@ When the `sdk.js` script run - it build an `iframe` on the host page and refer i
 That way - we control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
- * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
- * `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
- * it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
- * the way to communicate between `iframe` and the host (`post-messages`) is very slow.
+* the way to communicate between `iframe` and the host (`post-messages`) is very slow.
+* `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
+* `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
+* it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  
 ## Embed with freindly iframe 
 Freindly iframe is another way to embed webpages on host sites. basically friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
