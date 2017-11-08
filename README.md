@@ -79,11 +79,12 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 * ease the parent-child communication - now we don't need the slow `post-message` anymore, we can use `window.parent` to call the host (we could not access parent when our page was on different domain).
 * now we get the same priority as the host page when the browser allocate resources to render asstes
     
-## Freindly iframe pros
+## Freindly iframe cons
 * cookies and localstorage are now shared with parent, so you can't use your own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
-* it's can be hard to convince your partners to break the isolation that regular `iframe` holds
-* CORS - you need your servers to handle calls from multiple domains instead of only your domain
+* CORS - you need your servers to handle calls from multiple domains instead of your domain only
 * it's harder to develop `freindly iframe` then regular `iframe`
+* it's can be hard to convince your partners to break the isolation that regular `iframe` holds
+
 
 ## Conclusion
 in some situations `friendly iframe` is better then regular `iframe`, and you should definitely try it out if you need to embed your code in other sites.
