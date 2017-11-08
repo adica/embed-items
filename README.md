@@ -1,8 +1,8 @@
 # embed web pages with friendly iframe
 
-In the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and blogers to create more engaging content.
+In the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and bloggers to create more engaging content.
 
-After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a simple `iframe`. that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a classic `iframe`. that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
 
 ## Embed with a good old iframe
 To embed with iframe we give the user a code snippet that looks something like that:
@@ -14,7 +14,7 @@ To embed with iframe we give the user a code snippet that looks something like t
 </div>
 ```
 
-When the `sdk.js` script run - it build an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
+When the `sdk.js` script run - it builds an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
 
 ```html
 //host page
@@ -46,10 +46,10 @@ While this method works for many years on many sites (`youtube` still use it for
 * `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
 * it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  
-## Embed with freindly iframe 
-Freindly iframe is another way to embed webpages on host sites. basically friendly iframe is an iframe that shares the same domain as the main page it is hosted on (an iframe without `src`).
+## Embed with friendly iframe 
+A `friendly iframe` is another way to embed webpages on host sites. basically, `friendly iframe` is an `iframe` that shares the same domain as the main page it is hosted on (an iframe without `src`).
 
-We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page (`head` and `body`) content into this `iframe`. That way we get the same result, but now without any refernce to `playbuzz` servers on the host site.
+We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page (`head` and `body`) content into this `iframe`. That way we get the same result, but now without any reference to `playbuzz` servers on the host site.
 
 ```html
 //host page
@@ -73,14 +73,14 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 </html>
 ```
 
-## Freindly iframe pros
-* because we are now just another part on the host page DOM, our page will render faster
+## Friendly iframe pros
+* because we are now just another part of the host page DOM, our page will render faster
 * SEO is now as our partners want it to be - google index the page on host domain.
-* ease the parent-child communication - now we don't need the slow `post-message` anymore, we can use `window.parent` to call the host (we could not access parent when our page was on different domain).
-* now we get the same priority as the host page when the browser allocate resources to render asstes
+* ease the parent-child communication - now we don't need the slow `post-message` anymore, we can use `window.parent` to call the host (we could not access parent when our page was in a different domain).
+* now we get the same priority as the host page when the browser allocates resources to render assets
     
-## Freindly iframe cons
-* cookies and localstorage are now shared with parent, so you can't use your own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
+## Friendly iframe cons
+* cookies and localstorage are now shared with the parent, so you can't use your own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
 * CORS - you need your servers to handle calls from multiple domains instead of your domain only
 * it's harder to develop `freindly iframe` then regular `iframe`
 * it's can be hard to convince your partners to break the isolation that regular `iframe` holds
