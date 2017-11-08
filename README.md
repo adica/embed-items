@@ -42,7 +42,7 @@ That way - we control the entire `iframe` page. the host side does not care how 
 
 While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
  * `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
- * `iframe` is not responsive. so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
+ * `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
  * it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  * the way to communicate between `iframe` and the host (`post-messages`) is very slow.
  
