@@ -8,7 +8,7 @@ After our users use the [creator](https://publishers.playbuzz.com/create-with-pl
 To embed with iframe we give the user a code snippet that looks something like that:
 
 ```js
-<script src="//cdn.playbuzz.com/widget/sdk.js"></script>
+<script src="//cdn.playbuzz.com/sdk.js"></script>
 <div class="pb_feed"
    data-item="xxx-xxx-xxx">
 </div>
