@@ -80,9 +80,9 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 * now we get the same priority as the host page when the browser allocates resources to render assets
     
 ## Friendly iframe cons
-* cookies and localstorage are now shared with the parent, so you can't use your own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
-* CORS - you need your servers to handle calls from multiple domains instead of host domain only
-* it's harder to develop `freindly iframe` then regular `iframe` - you need to handle the content injection, the cookies issue, and config your server CORS settings
+* cookies and localstorage are now shared with the parent, so we can't use `playbuzz` own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
+* CORS - we need to configure our servers to handle calls from multiple domains instead of `playbuzz` domain only
+* it's harder to develop `freindly iframe` then regular `iframe` - we need to take care of the content injection, cookies issue, and configure CORS on our servers
 * it's can be hard to convince host sites to break the isolation that regular `iframe` holds
 
 
