@@ -2,7 +2,7 @@
 
 In the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and bloggers to create more engaging content.
 
-After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a classic `iframe`. that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a [classic iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
 
 ## Embed with a good old iframe
 To embed with iframe we give the user a code snippet that looks something like that:
@@ -38,12 +38,12 @@ When the `sdk.js` script run - it builds an `iframe` on the host page and refer 
 </html>
 ```
 
-That way - we control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
+That way - we at playbuzz control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
 * the way to communicate between `iframe` and the host (`post-messages`) is very slow.
-* `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to our page only after the host page, and it will slow our page render.
-* `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) we need to know about it on our `sdk.js` somehow, and change our `iframe` layout as well.
+* `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to the `iframe` page only after the host page, and it will slow the `iframe` page render.
+* `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) the `sdk.js` need to know about it somehow, and change the `iframe` layout as well.
 * it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
  
 ## Embed with friendly iframe 
@@ -81,10 +81,10 @@ We use the same code snippet as before, but this time we build an `iframe` witho
     
 ## Friendly iframe cons
 * cookies and localstorage are now shared with the parent, so you can't use your own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
-* CORS - you need your servers to handle calls from multiple domains instead of your domain only
-* it's harder to develop `freindly iframe` then regular `iframe`
-* it's can be hard to convince your partners to break the isolation that regular `iframe` holds
+* CORS - you need your servers to handle calls from multiple domains instead of host domain only
+* it's harder to develop `freindly iframe` then regular `iframe` - you need to handle the content injection, the cookies issue, and config your server CORS settings
+* it's can be hard to convince host sites to break the isolation that regular `iframe` holds
 
 
 ## Conclusion
-in some situations `friendly iframe` is better then regular `iframe`, and you should definitely try it out if you need to embed your code in other sites.
+in some situations `friendly iframe` is better then regular `iframe`, and you should definitely try it out if you need to embed your content in other sites.
