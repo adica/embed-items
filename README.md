@@ -38,7 +38,7 @@ When the `sdk.js` script run - it builds an `iframe` on the host page and refer 
 </html>
 ```
 
-That way - we at playbuzz control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
+That way - we at `playbuzz` control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
 While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
 * the way to communicate between `iframe` and the host (`post-messages`) is very slow.
