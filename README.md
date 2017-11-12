@@ -87,4 +87,5 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 
 
 ## Conclusion
-in some situations `friendly iframe` is better then regular `iframe`, and you should definitely try it out if you need to embed your content in other sites.
+While `classic iframe` is much easier to implement and can fit many cases, in some situations like when the SEO is important, or if you need to use parent-child communication many times, it is better to use `friendly iframe`.
+Anyway - I think you should definitely know this two options and the difference between them so you could decide which better for you case.
