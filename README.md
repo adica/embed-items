@@ -1,11 +1,11 @@
 # embed web pages with friendly iframe
 
-In the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and bloggers to create more engaging content.
+During the past year, I'm working at [playbuzz](https://www.playbuzz.com) - a platform that helps publishers and bloggers to create more engaging content.
 
-After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their stories, they need to embed it on their sites. To do that we use a [classic iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). that is the most common way to embed items in web pages, and it's been used on many sites for almost 20 years now.
+After our users use the [creator](https://publishers.playbuzz.com/create-with-playbuzz/) to create their own stories, they embed it into their sites. For doing that we use a [classic iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe). This is the most common way to embed items into web pages, and it has been used on many sites for more than 20 years.
 
 ## Embed with a good old iframe
-To embed with `iframe` we give the user a code snippet that looks something like that:
+To embed with `iframe` we give the user a code as follow:
 
 ```js
 <script src="//cdn.playbuzz.com/sdk.js"></script>
@@ -14,7 +14,7 @@ To embed with `iframe` we give the user a code snippet that looks something like
 </div>
 ```
 
-When the `sdk.js` script run - it builds an `iframe` on the host page and refer its `src` attribute to the relevant item on `playbuzz` servers.
+When the `sdk.js` script run - it builds an `iframe` on the host page and refer its `src` attribute to the relevant item on the `playbuzz` servers.
 
 ```html
 //host page
@@ -38,18 +38,18 @@ When the `sdk.js` script run - it builds an `iframe` on the host page and refer 
 </html>
 ```
 
-That way - we at `playbuzz` control the entire `iframe` page. the host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
+In this way `playbuzz` controls the entire `iframe` page. The host side does not care how we handle it, and there is a separation between the `host` and the `iframe` page.
 
-While this method works for many years on many sites (`youtube` still use it for example), it had many flows:
-* the way to communicate between `iframe` and the host (`post-messages`) is very slow.
-* `iframe` assets are prioritized very low on browser queue - the browser will allocate resources to the `iframe` page only after the host page, and it will slow the `iframe` page render.
-* `iframe` is not responsive, so every time the host page changes its layout (user switch from portrait to landscape mode for example) the `sdk.js` need to know about it somehow, and change the `iframe` layout as well.
-* it's hard to optimise the SEO - google will index the page like its `playbuzz` page, and our partners would like it to be index on their domain.
+While this method works well for many years on many sites (`youtube` still uses it for example), it had many flows:
+* the communication between `iframe` and the host (`post-messages`) is very slow.
+* `iframe` assets are prioritized very low on the browser queue - the browser will allocate resources to the `iframe` page only after the host page, slowing the `iframe` page render.
+* `iframe` is not responsive - every time the host page changes its layout (user switch from portrait to landscape mode for example) the `sdk.js` should be anonunced about it somehow, to change the `iframe` layout as well.
+* it is hard to optimise the SEO - google will index the page as a `playbuzz` page, while our partners would like it to be index under their own domain.
  
 ## Embed with friendly iframe 
-A `friendly iframe` is another way to embed webpages on host sites. basically, `friendly iframe` is an `iframe` that shares the same domain as the main page it is hosted on (an iframe without `src`).
+A `friendly iframe` is another way to embed webpages into host sites. Basically, `friendly iframe` is an `iframe` that shares the same domain as the main page it is hosted on (an iframe without `src`).
 
-We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page (`head` and `body`) content into this `iframe`. That way we get the same result, but now without any reference to `playbuzz` servers on the host site.
+We use the same code snippet as before, but this time we build an `iframe` without `src` attribute, and then inject our item page (`head` and `body`) content into this `iframe`. This way we get the same result, but now without any reference to `playbuzz` servers on the host site.
 
 ```html
 //host page
@@ -74,10 +74,10 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 ```
 
 ## Friendly iframe pros
-* because we are now just another part of the host page DOM, our page will render faster
-* SEO is now as our partners want it to be - google index the page on host domain.
-* ease the parent-child communication - now we don't need the slow `post-message` anymore, we can use `window.parent` to call the host (we could not access parent when our page was in a different domain).
-* now we get the same priority as the host page when the browser allocates resources to render assets
+* now our content is just another part of the host page DOM, our page will be rendered faster
+* SEO is now as our partners want it to be - google index the page under their host domain.
+* the parent-child communication is easier - we don't need the slow `post-message` anymore, we can use `window.parent` to call the host (we could not access the parent when our page was in a different domain).
+* our resources get the same priority as those of the host page when the browser allocates resources to render assets
     
 ## Friendly iframe cons
 * cookies and localstorage are now shared with the parent, so we can't use `playbuzz` own cookie cross sites (we use [xdomain](https://github.com/contently/xdomain-cookies) library to solve this issue)
@@ -87,5 +87,5 @@ We use the same code snippet as before, but this time we build an `iframe` witho
 
 
 ## Conclusion
-While `classic iframe` is much easier to implement and can fit many cases, in some situations like when the SEO is important, or if you need to use parent-child communication many times, it is better to use `friendly iframe`.
-Anyway - I think you should definitely know this two options, and the difference between them, so you could decide which better for your case.
+While `classic iframe` is much easier to implement and can fit many cases, there are some situations, e.g., when the SEO is important, or when you need to use parent-child communication many times, when it is better to use `friendly iframe`.
+Anyway - I think you should definitely be aware of these two options, and the difference between them, so you could decide which is better for your case.
